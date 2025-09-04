@@ -12,15 +12,18 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
+    <!-- Fonts --><link rel="stylesheet" href="{{ asset('css/adminLTE.css') }}">
+    @if(app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="{{ asset('css/adminLTE-rtl.css') }}">
+    @endif
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
+<body class="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+<div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

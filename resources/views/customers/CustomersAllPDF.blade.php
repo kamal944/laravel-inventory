@@ -52,8 +52,8 @@
         <tbody>
         <tr>
             <td>{{ $c->id }}</td>
-            <td>{{ $c->nama }}</td>
-            <td>{{ $c->alamat }}</td>
+            <td>{{ $c->name }}</td>
+            <td>{{ $c->address }}</td>
             <td>{{ $c->email }}</td>
         </tr>
         </tbody>

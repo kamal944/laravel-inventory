@@ -9,17 +9,22 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 class ProductsImport implements ToModel, WithHeadingRow
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
+        $row = array_change_key_case($row, CASE_LOWER); // To handle inconsistent column casing
+
+        $sku = $row['sku'] ?? null;
+
         return new Product([
-            'nama'          => $row['nama'],
-            'alamat'        => $row['alamat'],
-            'email'         => $row['email'],
-            'telepon'       => $row['telepon']
+            'name_en'        => $row['name_en'] ?? null,
+            'name_ar'        => $row['name_ar'] ?? null,
+            'sku'         => $sku,
+            'qty'         => $row['qty'] ?? 0,
+            'category_id' => $row['category_id'] ?? 1,
+            'image'       => $sku ? "/upload/products/{$sku}.jpg" : null,
         ]);
     }
 }

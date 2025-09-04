@@ -27,7 +27,7 @@ define(function () {
       return message;
     },
     noResults: function () {
-      return 'Sonuç bulunamadı';
+      return 'Sonuç bulunamedı';
     },
     searching: function () {
       return 'Aranıyor…';

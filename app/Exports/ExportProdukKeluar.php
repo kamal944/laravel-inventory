@@ -9,16 +9,19 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class ExportProdukKeluar implements FromView
 {
-    /**
-     * melakukan format dokumen menggunakan html, maka package ini juga menyediakan fungsi lainnya agar dapat me-load data tersebut dari file html / blade di Laravel
-     */
     use Exportable;
+
+    protected $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
 
     public function view(): View
     {
-        // TODO: Implement view() method.
-        return view('product_keluar.productKeluarAllExcel',[
-            'product_keluar' => Product_Keluar::all()
+        return view('product_keluar.productKeluarAllExcel', [
+            'product_keluar' => $this->data
         ]);
     }
 }

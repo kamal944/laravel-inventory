@@ -1506,7 +1506,7 @@
             }, {
                 mask: "+507-###-####",
                 cc: "PA",
-                cd: "Panama",
+                cd: "Paname",
                 desc_en: "",
                 name_ru: "Панама",
                 desc_ru: ""

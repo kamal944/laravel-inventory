@@ -161,17 +161,15 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-
+//        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
-        Yajra\DataTables\DataTablesServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-
+        // Yajra\DataTables\DataTablesServiceProvider::class,
+        // Collective\Html\HtmlServiceProvider::class,
+        // Barryvdh\DomPDF\ServiceProvider::class,
+        // Maatwebsite\Excel\ExcelServiceProvider::class,
+        // UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -181,9 +179,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-
+        Mccarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -234,7 +232,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         
 

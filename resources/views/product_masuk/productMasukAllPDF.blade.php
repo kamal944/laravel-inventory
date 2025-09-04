@@ -1,76 +1,157 @@
-{{--<!doctype html>--}}
-{{--<html lang="en">--}}
-{{--<head>--}}
-    {{--<meta charset="UTF-8">--}}
-    {{--<meta name="viewport"--}}
-          {{--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">--}}
-    {{--<meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
-    {{--<link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css ')}}">--}}
-    {{--<!-- Font Awesome -->--}}
-    {{--<link rel="stylesheet" href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.min.css')}} ">--}}
-    {{--<!-- Ionicons -->--}}
-    {{--<link rel="stylesheet" href="{{ asset('assets/bower_components/Ionicons/css/ionicons.min.css')}} ">--}}
-
-    {{--<title>Product Masuk Exports All PDF</title>--}}
-{{--</head>--}}
-{{--<body>--}}
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ __('main.product_in_report') }}</title>
     <style>
-        #product-masuk {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
+        body {
+            font-family: "DejaVu Sans", "Trebuchet MS", Arial, Helvetica, sans-serif;
+            direction: {{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }};
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 15px;
+        }
+
+        .report-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .report-subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .report-date {
+            font-style: sans-serif;
+            color: #666;
+            font-size: 14px;
+        }
+
+        #product-in {
             width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 12px;
         }
 
-        #product-masuk td, #product-masuk th {
+        #product-in td, #product-in th {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
+            text-align: {{ app()->getLocale() == 'ar' ? 'right' : 'left' }};
         }
 
-        #product-masuk tr:nth-child(even){background-color: #f2f2f2;}
+        #product-in tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-        #product-masuk tr:hover {background-color: #ddd;}
-
-        #product-masuk th {
+        #product-in th {
             padding-top: 12px;
             padding-bottom: 12px;
-            text-align: left;
             background-color: #4CAF50;
             color: white;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: {{ app()->getLocale() == 'ar' ? 'left' : 'right' }};
+            font-style: sans-serif;
+            color: #666;
+            font-size: 12px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        .company-logo {
+            max-height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .page-break {
+            page-break-after: always;
         }
     </style>
+</head>
+<body>
+<div class="report-header">
+    @if(config('app.logo'))
+        <img src="{{ config('app.logo') }}" class="company-logo" alt="Company Logo">
+    @endif
+    <div class="report-title">{{ __('main.product_in_report') }}</div>
+    <div class="report-date">{{ __('main.generated_on') }}: {{ now()->format('F j, Y') }}</div>
+</div>
 
-    <table id="product-masuk" width="100%">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>Product</td>
-            <td>Supplier</td>
-            <td>Quantity</td>
-            <td>Date</td>
-        </tr>
-        </thead>
-        @foreach($product_masuk as $p)
-            <tbody>
-            <tr>
-                <td>{{ $p->id }}</td>
-                <td>{{ $p->product->nama }}</td>
-                <td>{{ $p->supplier->nama }}</td>
-                <td>{{ $p->qty }}</td>
-                <td>{{ $p->tanggal }}</td>
-            </tr>
-            </tbody>
-        @endforeach
+<table id="product-in">
+    <thead>
+    <tr>
+        <th>{{ __('main.id') }}</th>
+        <th>{{ __('main.product') }}</th>
+        <th>{{ __('main.supplier') }}</th>
+        <th>{{ __('main.quantity') }}</th>
+        <th>{{ __('main.date') }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($product_masuk as $index => $p)
+        @if($index > 0 && $index % 25 == 0)
+    </tbody>
+</table>
+<div class="page-break"></div>
+<table id="product-in">
+    <thead>
+    <tr>
+        <th>{{ __('main.id') }}</th>
+        <th>{{ __('main.product') }}</th>
+        <th>{{ __('main.supplier') }}</th>
+        <th>{{ __('main.quantity') }}</th>
+        <th>{{ __('main.date') }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    @endif
+    <tr>
+        <td>{{ $p->id }}</td>
+        <td>
+            @if(app()->getLocale() === 'ar')
+                {{ $p->product->name_ar ?? $p->product->name_en ?? __('main.N/A') }}
+            @else
+                {{ $p->product->name_en ?? $p->product->name_ar ?? __('main.N/A') }}
+            @endif
+        </td>
+        <td>{{ $p->supplier->name }}</td>
+        <td>{{ number_format($p->qty) }}</td>
+        <td>{{ \Carbon\Carbon::parse($p->date)->format('M d, Y') }}</td>
+    </tr>
+    @endforeach
+    </tbody>
+</table>
 
-    </table>
+<div class="footer">
+    {{ __('main.total_records') }}: {{ count($product_masuk) }} |
+    {{ __('main.page') }} <span class="page-number"></span>
+</div>
 
-
-    {{--<!-- jQuery 3 -->--}}
-    {{--<script src="{{  asset('assets/bower_components/jquery/dist/jquery.min.js') }} "></script>--}}
-    {{--<!-- Bootstrap 3.3.7 -->--}}
-    {{--<script src="{{  asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }} "></script>--}}
-    {{--<!-- AdminLTE App -->--}}
-    {{--<script src="{{  asset('assets/dist/js/adminlte.min.js') }}"></script>--}}
-{{--</body>--}}
-{{--</html>--}}
-
-
+<script type="text/php">
+    if (isset($pdf)) {
+        $text = "{{ __('main.page') }} {PAGE_NUM} {{ __('main.of') }} {PAGE_COUNT}";
+        $size = 10;
+        $font = $fontMetrics->getFont("DejaVu Sans");
+        $width = $fontMetrics->get_text_width($text, $font, $size) / 2;
+        $x = ($pdf->get_width() - $width) / 2;
+        $y = $pdf->get_height() - 35;
+        $pdf->page_text($x, $y, $text, $font, $size);
+    }
+</script>
+</body>
+</html>

@@ -17,15 +17,14 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
 
-            $table->string('nama');
-            $table->integer('harga');
-            $table->string('image')->default(null);
+            $table->string('name_en');
+            $table->string('name_ar');
+            $table->string('image')->nullable();
             $table->integer('qty');
+            $table->integer('sku');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-
-
         });
     }
 

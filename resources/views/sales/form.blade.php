@@ -18,13 +18,13 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label >Name</label>
-                            <input type="text" class="form-control" id="nama" name="nama"  autofocus required>
+                            <input type="text" class="form-control" id="name" name="name"  autofocus required>
                             <span class="help-block with-errors"></span>
                         </div>
 
                         <div class="form-group">
                             <label >Address</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat"   required>
+                            <input type="text" class="form-control" id="address" name="address"   required>
                             <span class="help-block with-errors"></span>
                         </div>
 
@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label >Phone</label>
-                            <input type="text" class="form-control" id="telepon" name="telepon"   required>
+                            <input type="text" class="form-control" id="phone" name="phone"   required>
                             <span class="help-block with-errors"></span>
                         </div>
 

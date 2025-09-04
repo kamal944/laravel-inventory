@@ -17,14 +17,19 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label >Name</label>
-                            <input type="text" class="form-control" id="nama" name="nama"  autofocus required>
+                            <label >Name-en</label>
+                            <input type="text" class="form-control" id="name_en" name="name_en"  autofocus required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                        <div class="form-group">
+                            <label >Name-ar</label>
+                            <input type="text" class="form-control" id="name_ar" name="name_ar"  autofocus required>
                             <span class="help-block with-errors"></span>
                         </div>
 
                         <div class="form-group">
-                            <label >Price</label>
-                            <input type="text" class="form-control" id="harga" name="harga"   required>
+                            <label >sku</label>
+                            <input type="text" class="form-control" id="sku" name="sku"   required>
                             <span class="help-block with-errors"></span>
                         </div>
 

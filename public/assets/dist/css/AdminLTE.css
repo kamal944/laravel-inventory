@@ -145,6 +145,16 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+body.ltr .content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* === Arabic (RTL) === */
+body.rtl .content {
+  padding-left: 15px;
+  padding-right: 255px;
+}
 /* H1 - H6 font */
 h1,
 h2,
@@ -408,7 +418,21 @@ a:focus {
  * Component: Sidebar
  * ------------------
  */
-.main-sidebar {
+/* === RTL (Arabic) Styles === */
+
+
+body.rtl .main-sidebar {
+  display: none;
+  right: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+
+}
+
+/* === LTR (English) Styles === */
+body.ltr .main-sidebar {
   position: absolute;
   top: 0;
   left: 0;
@@ -421,6 +445,7 @@ a:focus {
   -o-transition: -o-transform 0.3s ease-in-out, width 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
 }
+
 @media (max-width: 767px) {
   .main-sidebar {
     padding-top: 100px;

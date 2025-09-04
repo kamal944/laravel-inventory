@@ -1,6 +1,6 @@
 //! moment.js locale configuration
 //! locale : Sinhalese [si]
-//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
+//! author : Sampath Sitinameluwa : https://github.com/sampathsris
 
 import moment from '../moment';
 

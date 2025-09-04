@@ -48,10 +48,10 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama'      => 'required',
-            'alamat'    => 'required',
+            'name'      => 'required',
+            'address'    => 'required',
             'email'     => 'required|unique:customers',
-            'telepon'   => 'required',
+            'phone'   => 'required',
         ]);
 
         Sale::create($request->all());
@@ -96,10 +96,10 @@ class SaleController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama'      => 'required|string|min:2',
-            'alamat'    => 'required|string|min:2',
+            'name'      => 'required|string|min:2',
+            'address'    => 'required|string|min:2',
             'email'     => 'required|string|email|max:255|unique:sales',
-            'telepon'   => 'required|string|min:2',
+            'phone'   => 'required|string|min:2',
         ]);
 
         $sale = Sale::findOrFail($id);

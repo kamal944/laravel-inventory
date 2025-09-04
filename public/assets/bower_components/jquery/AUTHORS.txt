@@ -283,7 +283,7 @@ Steve Mao <maochenyan@gmail.com>
 Zack Hall <zackhall@outlook.com>
 Bernhard M. Wiedemann <jquerybmw@lsmod.de>
 Todor Prikumov <tono_pr@abv.bg>
-Jha Naman <createnaman@gmail.com>
+Jha namen <createnamen@gmail.com>
 William Robinet <william.robinet@conostix.com>
 Alexander Lisianoi <all3fox@gmail.com>
 Vitaliy Terziev <vitaliyterziev@gmail.com>

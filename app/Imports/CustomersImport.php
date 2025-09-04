@@ -15,11 +15,13 @@ class CustomersImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        $row = array_change_key_case($row, CASE_LOWER);
+
         return new Customer([
-            'nama'          => $row['nama'],
-            'alamat'        => $row['alamat'],
-            'email'         => $row['email'],
-            'telepon'       => $row['telepon']
+            'name'      => $row['name'] ?? null,
+            'address'    => $row['address'] ?? null,  // Now lowercase
+            'email'     => $row['email'] ?? null,
+            'phone'   => $row['telephon'] ?? null
         ]);
     }
 }

@@ -39,7 +39,7 @@ define(function () {
         pluralWord(args.maximum, itemsWords) + 'wubrać';
     },
     noResults: function () {
-      return 'Žane wuslědki namakane';
+      return 'Žane wuslědki namekane';
     },
     searching: function () {
       return 'Pyta so…';

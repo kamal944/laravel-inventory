@@ -53,10 +53,17 @@
             <tbody>
             <tr>
                 <td>{{ $p->id }}</td>
-                <td>{{ $p->product->nama }}</td>
-                <td>{{ $p->supplier->nama }}</td>
+
+                <td>
+                    @if(app()->getLocale() === 'ar')
+                        {{ $p->product->name_ar ?? $p->product->name_en ?? __('main.N/A') }}
+                    @else
+                        {{ $p->product->name_en ?? $p->product->name_ar ?? __('main.N/A') }}
+                    @endif
+                </td>
+                <td>{{ $p->supplier->name }}</td>
                 <td>{{ $p->qty }}</td>
-                <td>{{ $p->tanggal }}</td>
+                <td>{{ $p->date }}</td>
             </tr>
             </tbody>
         @endforeach

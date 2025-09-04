@@ -18,7 +18,7 @@ class CreateProductKeluarTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('customer_id')->unsigned();
             $table->integer('qty');
-            $table->date('tanggal');
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');

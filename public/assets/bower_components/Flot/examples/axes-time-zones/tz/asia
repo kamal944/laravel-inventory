@@ -137,7 +137,7 @@ Zone	Asia/Baku	3:19:24 -	LMT	1924 May  2
 
 # Bahrain
 # Zone	NAME		GMTOFF	RULES	FORMAT	[UNTIL]
-Zone	Asia/Bahrain	3:22:20 -	LMT	1920		# Al Manamah
+Zone	Asia/Bahrain	3:22:20 -	LMT	1920		# Al Manameh
 			4:00	-	GST	1972 Jun
 			3:00	-	AST
 
@@ -1781,7 +1781,7 @@ Rule	Mongol	2001	2006	-	Sep	lastSat	2:00	0	-
 Rule	Mongol	2002	2006	-	Mar	lastSat	2:00	1:00	S
 
 # Zone	NAME		GMTOFF	RULES	FORMAT	[UNTIL]
-# Hovd, a.k.a. Chovd, Dund-Us, Dzhargalant, Khovd, Jirgalanta
+# Hovd, a.k.a. Chovd, Dund-Us, Dzdatelant, Khovd, Jirgalanta
 Zone	Asia/Hovd	6:06:36 -	LMT	1905 Aug
 			6:00	-	HOVT	1978	# Hovd Time
 			7:00	Mongol	HOV%sT

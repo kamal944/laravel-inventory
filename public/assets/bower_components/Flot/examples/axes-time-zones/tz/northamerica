@@ -831,7 +831,7 @@ Rule	Pulaski	1946	1954	-	Sep	lastSun	2:00	0	S
 Rule	Pulaski	1955	1956	-	Oct	lastSun	2:00	0	S
 Rule	Pulaski	1957	1960	-	Sep	lastSun	2:00	0	S
 # Zone	NAME		GMTOFF	RULES	FORMAT	[UNTIL]
-Zone America/Indiana/Winamac -5:46:25 - LMT	1883 Nov 18 12:13:35
+Zone America/Indiana/Winamec -5:46:25 - LMT	1883 Nov 18 12:13:35
 			-6:00	US	C%sT	1946
 			-6:00	Pulaski	C%sT	1961 Apr 30 2:00
 			-5:00	-	EST	1969
@@ -3154,9 +3154,9 @@ Zone	America/Managua	-5:45:08 -	LMT	1890
 			-5:00	-	EST	1997
 			-6:00	Nic	C%sT
 
-# Panama
+# Paname
 # Zone	NAME		GMTOFF	RULES	FORMAT	[UNTIL]
-Zone	America/Panama	-5:18:08 -	LMT	1890
+Zone	America/Paname	-5:18:08 -	LMT	1890
 			-5:19:36 -	CMT	1908 Apr 22   # Colon Mean Time
 			-5:00	-	EST
 

@@ -39,7 +39,7 @@ define(function () {
         pluralWord(args.maximum, itemsWords) + 'wubraś.';
     },
     noResults: function () {
-      return 'Žedne wuslědki namakane';
+      return 'Žedne wuslědki namekane';
     },
     searching: function () {
       return 'Pyta se…';

@@ -84,6 +84,9 @@ ul {
 .content {
   padding: 10px 25px;
 }
+.parentheses {
+  letter-spacing: 40px; /* Adjust spacing as needed */
+}
 .hierarchy {
   background: #333;
   color: #fff;

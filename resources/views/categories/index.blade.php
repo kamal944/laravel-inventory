@@ -1,6 +1,5 @@
 @extends('layouts.master')
 
-
 @section('top')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
@@ -8,26 +7,24 @@
 
 @section('content')
     <div class="box">
-
         <div class="box-header">
-            <h3 class="box-title">Data Categories</h3>
+            <h3 class="box-title">@lang('main.data_categories')</h3>
         </div>
 
         <div class="box-header">
-            <a onclick="addForm()" class="btn btn-primary" >Add Categories</a>
-            <a href="{{ route('exportPDF.categoriesAll') }}" class="btn btn-danger">Export PDF</a>
-            <a href="{{ route('exportExcel.categoriesAll') }}" class="btn btn-success">Export Excel</a>
+            <a onclick="addForm()" class="btn btn-primary">@lang('main.add_categories')</a>
+            <a href="{{ route('exportPDF.categoriesAll') }}" class="btn btn-danger">@lang('main.export_pdf')</a>
+            <a href="{{ route('exportExcel.categoriesAll') }}" class="btn btn-success">@lang('main.export_excel')</a>
         </div>
-
 
         <!-- /.box-header -->
         <div class="box-body">
             <table id="categories-table" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Action</th>
+                    <th>@lang('main.id')</th>
+                    <th>@lang('main.name')</th>
+                    <th>@lang('main.action')</th>
                 </tr>
                 </thead>
                 <tbody></tbody>
@@ -37,31 +34,15 @@
     </div>
 
     @include('categories.form')
-
 @endsection
 
 @section('bot')
-
     <!-- DataTables -->
-    <script src=" {{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') }} "></script>
-    <script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }} "></script>
+    <script src="{{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
     {{-- Validator --}}
     <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
-
-    {{--<script>--}}
-    {{--$(function () {--}}
-    {{--$('#items-table').DataTable()--}}
-    {{--$('#example2').DataTable({--}}
-    {{--'paging'      : true,--}}
-    {{--'lengthChange': false,--}}
-    {{--'searching'   : false,--}}
-    {{--'ordering'    : true,--}}
-    {{--'info'        : true,--}}
-    {{--'autoWidth'   : false--}}
-    {{--})--}}
-    {{--})--}}
-    {{--</script>--}}
 
     <script type="text/javascript">
         var table = $('#categories-table').DataTable({
@@ -72,7 +53,12 @@
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
-            ]
+            ],
+            @if(app()->getLocale() == 'ar')
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json"
+            }
+            @endif
         });
 
         function addForm() {
@@ -80,7 +66,7 @@
             $('input[name=_method]').val('POST');
             $('#modal-form').modal('show');
             $('#modal-form form')[0].reset();
-            $('.modal-title').text('Add Categories');
+            $('.modal-title').text("@lang('main.add_categories')");
         }
 
         function editForm(id) {
@@ -93,13 +79,12 @@
                 dataType: "JSON",
                 success: function(data) {
                     $('#modal-form').modal('show');
-                    $('.modal-title').text('Edit Categories');
-
+                    $('.modal-title').text("@lang('main.edit_categories')");
                     $('#id').val(data.id);
                     $('#name').val(data.name);
                 },
                 error : function() {
-                    alert("Nothing Data");
+                    alert("@lang('main.nothing_data')");
                 }
             });
         }
@@ -107,13 +92,13 @@
         function deleteData(id){
             var csrf_token = $('meta[name="csrf-token"]').attr('content');
             swal({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: "@lang('main.delete_confirm')",
+                text: "@lang('main.delete_confirm_text')",
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: '#d33',
                 confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: "@lang('main.delete_confirm_btn')"
             }).then(function () {
                 $.ajax({
                     url : "{{ url('categories') }}" + '/' + id,
@@ -122,7 +107,7 @@
                     success : function(data) {
                         table.ajax.reload();
                         swal({
-                            title: 'Success!',
+                            title: "@lang('main.delete_success')",
                             text: data.message,
                             type: 'success',
                             timer: '1500'
@@ -130,7 +115,7 @@
                     },
                     error : function () {
                         swal({
-                            title: 'Oops...',
+                            title: "@lang('main.delete_error')",
                             text: data.message,
                             type: 'error',
                             timer: '1500'
@@ -150,8 +135,6 @@
                     $.ajax({
                         url : url,
                         type : "POST",
-                        //hanya untuk input data tanpa dokumen
-//                      data : $('#modal-form form').serialize(),
                         data: new FormData($("#modal-form form")[0]),
                         contentType: false,
                         processData: false,
@@ -159,7 +142,7 @@
                             $('#modal-form').modal('hide');
                             table.ajax.reload();
                             swal({
-                                title: 'Success!',
+                                title: "@lang('main.delete_success')",
                                 text: data.message,
                                 type: 'success',
                                 timer: '1500'
@@ -167,7 +150,7 @@
                         },
                         error : function(data){
                             swal({
-                                title: 'Oops...',
+                                title: "@lang('main.delete_error')",
                                 text: data.message,
                                 type: 'error',
                                 timer: '1500'
@@ -179,5 +162,4 @@
             });
         });
     </script>
-
 @endsection
